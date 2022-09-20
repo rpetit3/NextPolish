@@ -200,17 +200,7 @@ def latestver(url):
 		return 'Unknown'
 
 def getver(path):
-	ver = 'Unknown'
-	readme = path + '/README.md'
-	if os.path.exists(readme):
-		with open(readme, 'r') as IN:
-			g = re.search(r'download/(.*?)/', IN.read())
-			if g:
-				ver = g.group(1)
-	latest = latestver('https://api.github.com/repos/Nextomics/NextPolish/releases/latest')
-	if latest != 'Unknown' and ver != latest:
-		print(('\033[35mPlease update to the latest version: %s, current version: %s \033[0m') % (latest, ver))
-	return ver
+	return BIOCONDA_SED_REPLACE
 
 def pypath():
 	return sys.executable
